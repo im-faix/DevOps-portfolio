@@ -27,7 +27,7 @@ Welcome to my DevOps Portfolio! I'm **Mohammed Faizan**, a dedicated DevOps Engi
 | Version Control     | Git, GitHub                                                                           |
 | Monitoring          | Prometheus, Grafana                                                                  |
 | Scripting & OS      | Linux (Ubuntu/Kali), Bash/Shell                                                      |
-| Others              | Postman, Maven, NGINX, Apache, Node.js, Java, Python basics                          |
+| Others              | Postman, Maven, NGINX,   Java, Python basics , Spring Boot , Oracle SQL                 |
 
 ---
 
