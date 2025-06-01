@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useGitHubProjects = (im-faix) => {
+const useGitHubProjects = (username) => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const useGitHubProjects = (im-faix) => {
       }
     };
     fetchRepos();
-  }, [im-faix]);
+  }, [username]);
 
   return projects;
 };
