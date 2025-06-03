@@ -1,9 +1,72 @@
-// components/ProjectCard.js
-const ProjectCard = ({ repo }) => (
-  <div className="project-card">
-    <h2><a href={repo.html_url}>{repo.name}</a></h2>
-    <p>{repo.description}</p>
-    <p>Technologies: {repo.topics.join(', ')}</p>
-    {repo.homepage && <a href={repo.homepage}>Live Demo</a>}
-  </div>
-);
+// src/components/Projects.jsx
+import React, { useEffect, useState } from "react";
+
+const GITHUB_USERNAME = "im-faix"; // change if needed
+const GITHUB_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+const DEVOPS_KEYWORDS = ["devops", "ci/cd", "docker", "kubernetes", "aws", "infrastructure"];
+
+export default function Projects() {
+  const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchRepos() {
+      try {
+        const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos`, {
+          headers: GITHUB_TOKEN ? { Authorization: `token ${GITHUB_TOKEN}` } : {}
+        });
+        const data = await res.json();
+        const filtered = data.filter((repo) => {
+          const desc = (repo.description || "").toLowerCase();
+          const topics = repo.topics || [];
+          return DEVOPS_KEYWORDS.some((keyword) => desc.includes(keyword) || topics.includes(keyword));
+        });
+        setRepos(filtered);
+      } catch (err) {
+        console.error("Failed to fetch repos:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchRepos();
+  }, []);
+
+  return (
+    <section id="projects" className="my-16">
+      <h2 className="text-3xl font-bold mb-4">Projects</h2>
+      {loading ? (
+        <p>Loading projects...</p>
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {repos.map((repo) => (
+            <div
+              key={repo.id}
+              className="bg-gray-800 rounded-2xl p-4 shadow-md hover:shadow-lg transition duration-200"
+            >
+              <h3 className="text-xl font-semibold mb-2">{repo.name}</h3>
+              <p className="text-sm text-gray-300 mb-3">{repo.description}</p>
+              {repo.homepage && (
+                <a
+                  href={repo.homepage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-green-400 block mb-2 hover:underline"
+                >
+                  Live Demo
+                </a>
+              )}
+              <a
+                href={repo.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:underline"
+              >
+                View on GitHub
+              </a>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
