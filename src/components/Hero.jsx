@@ -7,6 +7,19 @@ export default function Hero() {
         <a href="https://github.com/im-faix" target="_blank" className="hover:text-blue-400">GitHub</a>
         <a href="https://linkedin.com/in/faizan9" target="_blank" className="hover:text-blue-400">LinkedIn</a>
       </div>
+      <section id="about" className="my-16">...</section>
+
+// Skills.jsx
+<section id="skills" className="my-16">...</section>
+
+// Projects.jsx
+<section id="projects" className="my-16">...</section>
+
+// Certifications.jsx
+<section id="certifications" className="my-16">...</section>
+
+// Contact.jsx
+<section id="contact" className="my-16">...</section>
     </section>
   );
 }
