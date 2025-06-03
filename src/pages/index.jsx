@@ -1,10 +1,11 @@
 // pages/index.jsx
 import React from "react";
+import Projects from "../components/Projects";
 import Hero from "../components/Hero";
 import About from "../components/About";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
-import Certifications from "../components/Certifications";
+import Certifications from "../components/Certifications"; 
 import Contact from "../components/Contact";
 import Navbar from "../components/Navbar";
 import Resume from "../components/Resume";
