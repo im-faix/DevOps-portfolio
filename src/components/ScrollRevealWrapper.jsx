@@ -1,14 +1,18 @@
+// src/components/ScrollRevealWrapper.jsx
 import { useEffect } from "react";
-import ScrollReveal from "scrollreveal";
 
 export default function ScrollRevealWrapper({ children }) {
   useEffect(() => {
-    ScrollReveal().reveal("section", {
-      distance: "20px",
-      duration: 800,
-      easing: "ease-out",
-      origin: "bottom",
-      interval: 100,
+    // Only load scrollreveal on the client
+    import("scrollreveal").then((module) => {
+      const ScrollReveal = module.default;
+      ScrollReveal().reveal("section", {
+        distance: "20px",
+        duration: 800,
+        easing: "ease-out",
+        origin: "bottom",
+        interval: 100,
+      });
     });
   }, []);
 
