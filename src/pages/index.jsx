@@ -1,14 +1,13 @@
-// pages/index.jsx
+// src/pages/index.jsx
 import React from "react";
-import Projects from "../components/Projects";
+import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import About from "../components/About";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
-import Certifications from "../components/Certifications"; 
-import Contact from "../components/Contact";
-import Navbar from "../components/Navbar";
+import Certifications from "../components/Certifications";
 import Resume from "../components/Resume";
+import Contact from "../components/Contact";
 import ScrollRevealWrapper from "../components/ScrollRevealWrapper";
 
 export default function Home() {
